@@ -17,8 +17,8 @@ import time
 from datetime import date
 import numpy as np
 
-TIME_HOUR_OFFSET = -6
-CITY_NAME = "chicago"
+TIME_HOUR_OFFSET = -5
+CITY_NAME = "DC"
 
 NUM_HOURS_IN_DAY = 24
 NUM_DAYS_IN_WEEK = 7

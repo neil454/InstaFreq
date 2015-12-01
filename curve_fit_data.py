@@ -16,11 +16,11 @@ Section: 02
 import numpy as np
 import matplotlib.pyplot as plt
 
-CITY_NAME = "Chicago"
+CITY_NAME = "Baltimore"
 POLY_DEGREE_PER_DAY = 10
-POLY_DEGREE_WHOLE_WEEK = 50
+POLY_DEGREE_WHOLE_WEEK = 20
 
-SAVE_PLOTS = True
+SAVE_GRAPH = False
 
 DAYS_OF_THE_WEEK = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
@@ -56,6 +56,7 @@ print np.poly1d(curve_coef_whole_week)
 
 np.savetxt(fname=curve_data_whole_week_file, X=curve_coef_whole_week, fmt='%f', delimiter=' ', newline=' ')
 
+
 for day in range(len(DAYS_OF_THE_WEEK)):
     fig = plt.figure()
     fig.suptitle(CITY_NAME, fontsize=16, fontweight='bold')
@@ -72,7 +73,8 @@ for day in range(len(DAYS_OF_THE_WEEK)):
     plt.ylim([0, plt.axes().get_ylim()[1]])
     plt.xlim([0, plt.axes().get_xlim()[1]])
 
-    plt.savefig("./graphs/" + CITY_NAME + "/" + CITY_NAME + "_" + DAYS_OF_THE_WEEK[day] + ".png")
+    if SAVE_GRAPH:
+        plt.savefig("./graphs/" + CITY_NAME + "/" + CITY_NAME + "_" + DAYS_OF_THE_WEEK[day] + ".png")
     # plt.show()
     fig.clear()
 
@@ -91,4 +93,5 @@ plt.plot(hours_in_week_x, week_freq_concat, '.', xp, p(xp), '-')
 plt.ylim([0, plt.axes().get_ylim()[1]])
 plt.xlim([0, plt.axes().get_xlim()[1]])
 
-plt.savefig("./graphs/" + CITY_NAME + "/" + CITY_NAME + "_FullWeek.png")
+if SAVE_GRAPH:
+    plt.savefig("./graphs/" + CITY_NAME + "/" + CITY_NAME + "_FullWeek.png")
